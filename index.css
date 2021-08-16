@@ -1,0 +1,26 @@
+
+.bar-chart-axes{
+  margin: 100px;
+  height: 500px;
+  width: 1000px;
+  border-left: 1px solid black;
+  border-bottom: 1px solid black;
+  display: flex;
+  align-items: flex-end;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.bar{
+  background-color: blue;
+  border: 1px solid black;
+  margin: 0 10px 0 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.data-value{
+  background-color: white;
+  padding: 1px;
+}
