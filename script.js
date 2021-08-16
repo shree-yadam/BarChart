@@ -1,5 +1,7 @@
 function drawBarChart(data, options, element){
   let $barAxes = $("<div class='bar-chart-axes'></div>");
+  $barAxes.css('width', options.width || '1000px');
+  $barAxes.css('height', options.height || '500px');
   element.append($barAxes);
   for(let i = 0; i < data.length ; i++) {
     const elemId = `bar${i}`;
@@ -18,7 +20,7 @@ function drawBarChart(data, options, element){
 
 $(document).ready(function () {
   const data = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-  const options = 0;
+  const options = {width: '1200px', height: '1200px'};
   const barChartDiv = $('#bar-chart');
   drawBarChart(data, options, barChartDiv);
 });
