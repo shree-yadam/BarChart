@@ -26,19 +26,19 @@ function drawBarChart(data, options, element){
   case "top":
     pos = "flex-start";
     break;
-  case "center":
-    pos = "center";
-    break;
   case "bottom":
     pos = "flex-end";
     break;
+  default:
+    pos = "center";
   }
   $('.bar').css("align-items", pos);
+  $('.bar').css("background-color", options["bar-color"] || "blue");
 }
 
 $(document).ready(function () {
   const data = [['a', 1], ['b', 2], ['c', 3], ['d', 4], ['e', 5], ['f', 6], ['g', 7], ['h', 8], ['i', 9], ['j', 10]];
-  const options = {width: '1200px', height: '1200px', "data-position": "bottom"};
+  const options = {width: '1200px', height: '1200px'};
   const barChartDiv = $('#bar-chart');
   drawBarChart(data, options, barChartDiv);
 });
