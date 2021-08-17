@@ -6,7 +6,7 @@ function drawBarChart(data, options, element){
   let $barAxes = $("<div class='bar-chart-axes'></div>");
   $barAxes.css('width', options.width || '1000px');
   $barAxes.css('height', options.height || '500px');
-  element.append($barTitle, $barAxes);
+  options.title ? element.append($barTitle, $barAxes) : element.append($barAxes);
   element.css({display: "flex", "flex-direction": "column", "align-items": "center"});
 
   for(let i = 0; i < data.length ; i++) {
@@ -23,6 +23,7 @@ function drawBarChart(data, options, element){
     $(elemIDSelector).css("margin-left", `${calcMargin}px`);
     $(`#bar-label${i}`).css("width", `${calcMargin}px`);
     $(`#bar-label${i}`).css("margin-left", `${calcMargin}px`);
+    $('.label').css("color", options["label-color"] || "black");
   }
   let pos = "center";
   switch(options["data-position"]){
