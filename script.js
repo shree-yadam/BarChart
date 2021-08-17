@@ -2,10 +2,13 @@ function maxDataVal(data) {
   return data.reduce((prev, curr) => curr[1] > prev ? curr[1] : prev, data[0][1]);
 }
 function drawBarChart(data, options, element){
+  const $barTitle = $(`<h2>${options.title}</h2>`)
   let $barAxes = $("<div class='bar-chart-axes'></div>");
   $barAxes.css('width', options.width || '1000px');
   $barAxes.css('height', options.height || '500px');
-  element.append($barAxes);
+  element.append($barTitle, $barAxes);
+  element.css({display: "flex", "flex-direction": "column", "align-items": "center"});
+
   for(let i = 0; i < data.length ; i++) {
     $('.bar-chart-axes').append(`<div id="dataLabel${i}" class="dataLabel"></div>`);
     const elemId = `bar${i}`;
@@ -38,7 +41,7 @@ function drawBarChart(data, options, element){
 
 $(document).ready(function () {
   const data = [['a', 1], ['b', 2], ['c', 3], ['d', 4], ['e', 5], ['f', 6], ['g', 7], ['h', 8], ['i', 9], ['j', 10]];
-  const options = {width: '1200px', height: '1200px'};
+  const options = {width: '1200px', height: '1200px', title: 'BAR CHART'};
   const barChartDiv = $('#bar-chart');
   drawBarChart(data, options, barChartDiv);
 });
