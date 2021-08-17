@@ -12,16 +12,22 @@ function drawBarChart(data, options, element){
   for(let i = 0; i < data.length ; i++) {
     $('.bar-chart-axes').append(`<div id="dataLabel${i}" class="dataLabel"></div>`);
     const elemId = `bar${i}`;
-    const calcMargin = 900 / (data.length * 2);
+    let calcWidth;
+    if(options.spacing){
+      calcWidth = ($('.bar-chart-axes').width() * 0.9 - (data.length * options.spacing)) / data.length;
+    } else {
+      calcWidth = $('.bar-chart-axes').width() * 0.9 / (data.length * 2);
+    }
+    const calcMargin = options.spacing || calcWidth;
     const elemString = `<div id=${elemId} class='bar'><p id="value${i}" class="data-value">${data[i][1]}</p></div>`;
     $(`#dataLabel${i}`).append(elemString);
     $(`#dataLabel${i}`).append('<div class="line"></div>');
     $(`#dataLabel${i}`).append(`<div id="bar-label${i}" class="label"><p>${data[i][0]}</p><div>`);
     const elemIDSelector = `#${elemId}`;
-    $(elemIDSelector).css("width", `${calcMargin}px`);
+    $(elemIDSelector).css("width", `${calcWidth}px`);
     $(elemIDSelector).css("height", `${(data[i][1] / maxDataVal(data)) * 90}%`);
     $(elemIDSelector).css("margin-left", `${calcMargin}px`);
-    $(`#bar-label${i}`).css("width", `${calcMargin}px`);
+    $(`#bar-label${i}`).css("width", `${calcWidth}px`);
     $(`#bar-label${i}`).css("margin-left", `${calcMargin}px`);
     $('.label').css("color", options["label-color"] || "black");
   }
